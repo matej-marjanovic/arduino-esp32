@@ -91,10 +91,12 @@ set(ARDUINO_ALL_LIBRARIES
   FS
   HTTPClient
   HTTPUpdate
+  HX711
   Insights
   LittleFS
   NetBIOS
   Network
+  NimBLE-Arduino
   OpenThread
   PPP
   Preferences
@@ -107,6 +109,7 @@ set(ARDUINO_ALL_LIBRARIES
   Ticker
   Update
   USB
+  U8g2
   WebServer
   NetworkClientSecure
   WiFi
@@ -154,11 +157,180 @@ set(ARDUINO_LIBRARY_HTTPClient_SRCS libraries/HTTPClient/src/HTTPClient.cpp)
 
 set(ARDUINO_LIBRARY_HTTPUpdate_SRCS libraries/HTTPUpdate/src/HTTPUpdate.cpp)
 
+set(ARDUINO_LIBRARY_HX711_SRCS libraries/HX711/src/HX711.cpp)
+
 set(ARDUINO_LIBRARY_Insights_SRCS libraries/Insights/src/Insights.cpp)
 
 set(ARDUINO_LIBRARY_LittleFS_SRCS libraries/LittleFS/src/LittleFS.cpp)
 
 set(ARDUINO_LIBRARY_NetBIOS_SRCS libraries/NetBIOS/src/NetBIOS.cpp)
+
+set(ARDUINO_LIBRARY_NimBLE-Arduino_SRCS
+  libraries/NimBLE-Arduino/src/NimBLEAdvertisedDevice.cpp
+  libraries/NimBLE-Arduino/src/NimBLEDescriptor.cpp
+  libraries/NimBLE-Arduino/src/NimBLEClient.cpp
+  libraries/NimBLE-Arduino/src/NimBLEAdvertising.cpp
+  libraries/NimBLE-Arduino/src/NimBLEAddress.cpp
+  libraries/NimBLE-Arduino/src/NimBLEUUID.cpp
+  libraries/NimBLE-Arduino/src/NimBLEService.cpp
+  libraries/NimBLE-Arduino/src/NimBLERemoteDescriptor.cpp
+  libraries/NimBLE-Arduino/src/NimBLEDevice.cpp
+  libraries/NimBLE-Arduino/src/NimBLEExtAdvertising.cpp
+  libraries/NimBLE-Arduino/src/NimBLERemoteCharacteristic.cpp
+  libraries/NimBLE-Arduino/src/NimBLERemoteService.cpp
+  libraries/NimBLE-Arduino/src/NimBLECharacteristic.cpp
+  libraries/NimBLE-Arduino/src/NimBLESecurity.cpp
+  libraries/NimBLE-Arduino/src/NimBLE2904.cpp
+  libraries/NimBLE-Arduino/src/NimBLEScan.cpp
+  libraries/NimBLE-Arduino/src/NimBLEBeacon.cpp
+  libraries/NimBLE-Arduino/src/NimBLEUtils.cpp
+  libraries/NimBLE-Arduino/src/nimble/esp_port/esp-hci/src/esp_nimble_hci.c
+  libraries/NimBLE-Arduino/src/nimble/esp_port/port/src/esp_nimble_mem.c
+  libraries/NimBLE-Arduino/src/nimble/ext/tinycrypt/src/hmac.c
+  libraries/NimBLE-Arduino/src/nimble/ext/tinycrypt/src/ctr_mode.c
+  libraries/NimBLE-Arduino/src/nimble/ext/tinycrypt/src/ecc_dsa.c
+  libraries/NimBLE-Arduino/src/nimble/ext/tinycrypt/src/ecc_platform_specific.c
+  libraries/NimBLE-Arduino/src/nimble/ext/tinycrypt/src/ecc.c
+  libraries/NimBLE-Arduino/src/nimble/ext/tinycrypt/src/cmac_mode.c
+  libraries/NimBLE-Arduino/src/nimble/ext/tinycrypt/src/aes_decrypt.c
+  libraries/NimBLE-Arduino/src/nimble/ext/tinycrypt/src/ctr_prng.c
+  libraries/NimBLE-Arduino/src/nimble/ext/tinycrypt/src/utils.c
+  libraries/NimBLE-Arduino/src/nimble/ext/tinycrypt/src/aes_encrypt.c
+  libraries/NimBLE-Arduino/src/nimble/ext/tinycrypt/src/cbc_mode.c
+  libraries/NimBLE-Arduino/src/nimble/ext/tinycrypt/src/ccm_mode.c
+  libraries/NimBLE-Arduino/src/nimble/ext/tinycrypt/src/sha256.c
+  libraries/NimBLE-Arduino/src/nimble/ext/tinycrypt/src/ecc_dh.c
+  libraries/NimBLE-Arduino/src/nimble/ext/tinycrypt/src/hmac_prng.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/drivers/nrf51/src/ble_hw.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/drivers/nrf51/src/ble_phy.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/drivers/nrf52/src/ble_hw.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/drivers/nrf52/src/ble_phy_trace.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/drivers/nrf52/src/ble_phy.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/transport/ram/src/ble_hci_ram.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/mesh/src/proxy.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/mesh/src/health_cli.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/mesh/src/nodes.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/mesh/src/transport.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/mesh/src/subnet.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/mesh/src/model_cli.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/mesh/src/aes-ccm.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/mesh/src/prov_device.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/mesh/src/access.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/mesh/src/cfg.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/mesh/src/light_model.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/mesh/src/cdb.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/mesh/src/pb_adv.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/mesh/src/cfg_cli.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/mesh/src/shell.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/mesh/src/health_srv.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/mesh/src/model_srv.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/mesh/src/settings.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/mesh/src/beacon.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/mesh/src/net.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/mesh/src/lpn.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/mesh/src/friend.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/mesh/src/app_keys.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/mesh/src/prov.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/mesh/src/provisioner.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/mesh/src/pb_gatt.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/mesh/src/heartbeat.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/mesh/src/crypto.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/mesh/src/mesh.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/mesh/src/adv.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/mesh/src/cfg_srv.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/mesh/src/glue.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/mesh/src/rpl.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/util/src/addr.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/services/ias/src/ble_svc_ias.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/services/ans/src/ble_svc_ans.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/services/gatt/src/ble_svc_gatt.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/services/ipss/src/ble_svc_ipss.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/services/gap/src/ble_svc_gap.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/services/lls/src/ble_svc_lls.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/services/dis/src/ble_svc_dis.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/services/bas/src/ble_svc_bas.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/store/config/src/ble_store_nvs.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/store/config/src/ble_store_config_conf.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/store/config/src/ble_store_config.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/src/ble_store_util.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/src/ble_hs_startup.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/src/ble_att_cmd.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/src/ble_hs_conn.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/src/ble_l2cap.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/src/ble_hs_log.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/src/ble_hs.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/src/ble_hs_resolv.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/src/ble_hs_mbuf.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/src/ble_hs_id.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/src/ble_hs_mqueue.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/src/ble_hs_periodic_sync.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/src/ble_store.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/src/ble_sm.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/src/ble_hs_cfg.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/src/ble_l2cap_sig.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/src/ble_gattc.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/src/ble_hs_flow.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/src/ble_gap.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/src/ble_eddystone.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/src/ble_hs_hci.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/src/ble_att_clt.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/src/ble_hs_hci_cmd.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/src/ble_ibeacon.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/src/ble_hs_misc.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/src/ble_sm_cmd.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/src/ble_l2cap_coc.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/src/ble_hs_shutdown.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/src/ble_hs_atomic.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/src/ble_sm_sc.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/src/ble_sm_lgcy.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/src/ble_hs_adv.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/src/ble_uuid.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/src/ble_gatts_lcl.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/src/ble_hs_stop.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/src/ble_l2cap_sig_cmd.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/src/ble_hs_hci_util.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/src/ble_gatts.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/src/ble_hs_hci_evt.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/src/ble_hs_pvcy.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/src/ble_att_svr.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/src/ble_monitor.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/src/ble_sm_alg.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/host/src/ble_att.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/controller/src/ble_ll_sched.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/controller/src/ble_ll_conn.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/controller/src/ble_ll_scan.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/controller/src/ble_ll_trace.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/controller/src/ble_ll_supp_cmd.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/controller/src/ble_ll.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/controller/src/ble_ll_dtm.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/controller/src/ble_ll_rand.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/controller/src/ble_ll_ctrl.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/controller/src/ble_ll_adv.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/controller/src/ble_ll_rfmgmt.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/controller/src/ble_ll_utils.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/controller/src/ble_ll_resolv.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/controller/src/ble_ll_iso.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/controller/src/ble_ll_hci.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/controller/src/ble_ll_conn_hci.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/controller/src/ble_ll_sync.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/controller/src/ble_ll_hci_ev.c
+  libraries/NimBLE-Arduino/src/nimble/nimble/controller/src/ble_ll_whitelist.c
+  libraries/NimBLE-Arduino/src/nimble/porting/nimble/src/hal_timer.c
+  libraries/NimBLE-Arduino/src/nimble/porting/nimble/src/os_mbuf.c
+  libraries/NimBLE-Arduino/src/nimble/porting/nimble/src/nimble_port.c
+  libraries/NimBLE-Arduino/src/nimble/porting/nimble/src/mem.c
+  libraries/NimBLE-Arduino/src/nimble/porting/nimble/src/os_cputime_pwr2.c
+  libraries/NimBLE-Arduino/src/nimble/porting/nimble/src/hal_uart.c
+  libraries/NimBLE-Arduino/src/nimble/porting/nimble/src/os_mempool.c
+  libraries/NimBLE-Arduino/src/nimble/porting/nimble/src/os_cputime.c
+  libraries/NimBLE-Arduino/src/nimble/porting/nimble/src/endian.c
+  libraries/NimBLE-Arduino/src/nimble/porting/nimble/src/os_msys_init.c
+  libraries/NimBLE-Arduino/src/nimble/porting/npl/freertos/src/nimble_port_freertos.c
+  libraries/NimBLE-Arduino/src/nimble/porting/npl/freertos/src/npl_os_freertos.c
+  libraries/NimBLE-Arduino/src/NimBLEEddystoneURL.cpp
+  libraries/NimBLE-Arduino/src/NimBLEHIDDevice.cpp
+  libraries/NimBLE-Arduino/src/NimBLEServer.cpp
+  libraries/NimBLE-Arduino/src/NimBLEEddystoneTLM.cpp)
 
 set(ARDUINO_LIBRARY_OpenThread_SRCS
   libraries/OpenThread/src/OThreadCLI.cpp
@@ -209,6 +381,137 @@ set(ARDUINO_LIBRARY_USB_SRCS
   libraries/USB/src/USBHIDSystemControl.cpp
   libraries/USB/src/USBHIDVendor.cpp
   libraries/USB/src/USBVendor.cpp)
+
+set(ARDUINO_LIBRARY_U8g2_SRCS
+  libraries/U8g2/src/U8x8lib.cpp
+  libraries/U8g2/src/U8g2lib.cpp
+  libraries/U8g2/src/clib/u8x8_cad.c
+  libraries/U8g2/src/clib/u8x8_d_lc7981.c
+  libraries/U8g2/src/clib/u8x8_d_st7567.c
+  libraries/U8g2/src/clib/u8x8_d_sh1108.c
+  libraries/U8g2/src/clib/u8g2_fonts.c
+  libraries/U8g2/src/clib/u8x8_d_ssd1317.c
+  libraries/U8g2/src/clib/u8x8_d_ist7920.c
+  libraries/U8g2/src/clib/u8g2_kerning.c
+  libraries/U8g2/src/clib/u8x8_d_uc1617.c
+  libraries/U8g2/src/clib/u8x8_d_uc1701_dogs102.c
+  libraries/U8g2/src/clib/u8g2_d_setup.c
+  libraries/U8g2/src/clib/u8x8_d_st75160.c
+  libraries/U8g2/src/clib/u8x8_d_st75320.c
+  libraries/U8g2/src/clib/u8x8_d_max7219.c
+  libraries/U8g2/src/clib/u8x8_d_uc1638.c
+  libraries/U8g2/src/clib/u8x8_d_ssd1362.c
+  libraries/U8g2/src/clib/u8x8_d_ssd1309.c
+  libraries/U8g2/src/clib/u8g2_arc.c
+  libraries/U8g2/src/clib/u8x8_d_ssd1306_96x16.c
+  libraries/U8g2/src/clib/u8x8_d_st7586s_ymc240160.c
+  libraries/U8g2/src/clib/u8x8_d_pcd8544_84x48.c
+  libraries/U8g2/src/clib/u8g2_input_value.c
+  libraries/U8g2/src/clib/u8g2_cleardisplay.c
+  libraries/U8g2/src/clib/u8g2_ll_hvline.c
+  libraries/U8g2/src/clib/u8g2_setup.c
+  libraries/U8g2/src/clib/u8x8_d_uc1628.c
+  libraries/U8g2/src/clib/u8x8_capture.c
+  libraries/U8g2/src/clib/u8x8_d_ssd1607_200x200.c
+  libraries/U8g2/src/clib/u8x8_d_ssd1306_48x64.c
+  libraries/U8g2/src/clib/u8x8_d_ssd1326.c
+  libraries/U8g2/src/clib/u8x8_d_ssd1322.c
+  libraries/U8g2/src/clib/u8x8_debounce.c
+  libraries/U8g2/src/clib/u8x8_d_ks0108.c
+  libraries/U8g2/src/clib/u8x8_d_st7586s_jlx320160.c
+  libraries/U8g2/src/clib/u8x8_d_ch1120.c
+  libraries/U8g2/src/clib/u8x8_d_uc1609.c
+  libraries/U8g2/src/clib/u8x8_d_st7302.c
+  libraries/U8g2/src/clib/u8log.c
+  libraries/U8g2/src/clib/u8x8_d_st7539.c
+  libraries/U8g2/src/clib/u8x8_d_ssd1306_2040x16.c
+  libraries/U8g2/src/clib/u8x8_d_uc1610.c
+  libraries/U8g2/src/clib/u8x8_d_ssd1306_128x32.c
+  libraries/U8g2/src/clib/u8x8_message.c
+  libraries/U8g2/src/clib/u8x8_d_ssd1606_172x72.c
+  libraries/U8g2/src/clib/u8x8_d_s1d15300.c
+  libraries/U8g2/src/clib/u8x8_d_ist3020.c
+  libraries/U8g2/src/clib/u8x8_setup.c
+  libraries/U8g2/src/clib/u8x8_d_il3820_296x128.c
+  libraries/U8g2/src/clib/u8x8_d_ssd1325.c
+  libraries/U8g2/src/clib/u8x8_d_st7511.c
+  libraries/U8g2/src/clib/u8x8_d_ssd1306_64x48.c
+  libraries/U8g2/src/clib/u8x8_d_uc1604.c
+  libraries/U8g2/src/clib/u8x8_8x8.c
+  libraries/U8g2/src/clib/u8log_u8g2.c
+  libraries/U8g2/src/clib/u8x8_d_st7586s_jlx384160.c
+  libraries/U8g2/src/clib/u8x8_d_ssd1306_128x64_noname.c
+  libraries/U8g2/src/clib/u8x8_fonts.c
+  libraries/U8g2/src/clib/u8x8_d_st75256.c
+  libraries/U8g2/src/clib/u8x8_d_st7301.c
+  libraries/U8g2/src/clib/u8x8_d_s1d15721.c
+  libraries/U8g2/src/clib/u8g2_circle.c
+  libraries/U8g2/src/clib/u8x8_d_sbn1661.c
+  libraries/U8g2/src/clib/u8g2_box.c
+  libraries/U8g2/src/clib/u8x8_d_uc1611.c
+  libraries/U8g2/src/clib/u8x8_d_gp1287ai.c
+  libraries/U8g2/src/clib/u8g2_intersection.c
+  libraries/U8g2/src/clib/u8log_u8x8.c
+  libraries/U8g2/src/clib/u8x8_d_st7565.c
+  libraries/U8g2/src/clib/u8x8_d_st7588.c
+  libraries/U8g2/src/clib/u8x8_d_sh1106_64x32.c
+  libraries/U8g2/src/clib/u8x8_d_ssd1306_64x32.c
+  libraries/U8g2/src/clib/u8g2_message.c
+  libraries/U8g2/src/clib/u8x8_d_gp1247ai.c
+  libraries/U8g2/src/clib/u8x8_d_pcf8812.c
+  libraries/U8g2/src/clib/u8g2_bitmap.c
+  libraries/U8g2/src/clib/u8x8_d_uc1701_mini12864.c
+  libraries/U8g2/src/clib/u8x8_d_ssd1306_96x40.c
+  libraries/U8g2/src/clib/u8x8_d_t6963.c
+  libraries/U8g2/src/clib/u8x8_u8toa.c
+  libraries/U8g2/src/clib/u8x8_d_ist3088.c
+  libraries/U8g2/src/clib/u8x8_d_st7586s_md240128.c
+  libraries/U8g2/src/clib/u8x8_d_st7586s_erc240160.c
+  libraries/U8g2/src/clib/u8x8_d_st7571.c
+  libraries/U8g2/src/clib/u8x8_display.c
+  libraries/U8g2/src/clib/u8x8_d_gp1294ai.c
+  libraries/U8g2/src/clib/u8x8_gpio.c
+  libraries/U8g2/src/clib/u8x8_d_uc1601.c
+  libraries/U8g2/src/clib/u8x8_d_sed1330.c
+  libraries/U8g2/src/clib/u8x8_d_st7920.c
+  libraries/U8g2/src/clib/u8x8_d_ssd1305.c
+  libraries/U8g2/src/clib/u8x8_d_ssd1320.c
+  libraries/U8g2/src/clib/u8g2_selection_list.c
+  libraries/U8g2/src/clib/u8x8_d_s1d15e06.c
+  libraries/U8g2/src/clib/u8x8_d_hd44102.c
+  libraries/U8g2/src/clib/u8x8_d_ld7032_60x32.c
+  libraries/U8g2/src/clib/u8g2_buffer.c
+  libraries/U8g2/src/clib/u8x8_selection_list.c
+  libraries/U8g2/src/clib/u8x8_d_st7528.c
+  libraries/U8g2/src/clib/mui.c
+  libraries/U8g2/src/clib/u8x8_d_ssd1316.c
+  libraries/U8g2/src/clib/u8g2_line.c
+  libraries/U8g2/src/clib/u8g2_font.c
+  libraries/U8g2/src/clib/u8x8_d_st75161.c
+  libraries/U8g2/src/clib/u8x8_d_ssd1312.c
+  libraries/U8g2/src/clib/u8x8_d_sh1122.c
+  libraries/U8g2/src/clib/u8g2_d_memory.c
+  libraries/U8g2/src/clib/u8x8_d_ssd1318.c
+  libraries/U8g2/src/clib/u8x8_string.c
+  libraries/U8g2/src/clib/u8x8_d_st7586s_s028hn118a.c
+  libraries/U8g2/src/clib/u8x8_d_sh1107.c
+  libraries/U8g2/src/clib/u8g2_button.c
+  libraries/U8g2/src/clib/u8x8_d_pcf8814_hx1230.c
+  libraries/U8g2/src/clib/u8g2_polygon.c
+  libraries/U8g2/src/clib/u8x8_u16toa.c
+  libraries/U8g2/src/clib/u8x8_input_value.c
+  libraries/U8g2/src/clib/u8x8_d_ssd1363.c
+  libraries/U8g2/src/clib/mui_u8g2.c
+  libraries/U8g2/src/clib/u8x8_d_a2printer.c
+  libraries/U8g2/src/clib/u8x8_byte.c
+  libraries/U8g2/src/clib/u8x8_d_ssd1327.c
+  libraries/U8g2/src/clib/u8x8_d_ssd1306_72x40.c
+  libraries/U8g2/src/clib/u8x8_d_ssd1329.c
+  libraries/U8g2/src/clib/u8x8_d_ls013b7dh03.c
+  libraries/U8g2/src/clib/u8x8_d_sh1106_72x40.c
+  libraries/U8g2/src/clib/u8g2_hvline.c
+  libraries/U8g2/src/clib/u8x8_d_gu800.c
+  libraries/U8g2/src/clib/u8x8_d_uc1608.c)
 
 set(ARDUINO_LIBRARY_WebServer_SRCS
   libraries/WebServer/src/WebServer.cpp
